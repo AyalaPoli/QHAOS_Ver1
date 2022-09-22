@@ -12,4 +12,4 @@ QHOAS is a software for mediate the interaction of the control box and the user
 * Pillow
 * customtkinter
 
-[QHOAS Wiki](https://teams.microsoft.com/l/channel/19%3Ad4q3N4IHz3-BtEn51wlFmG9xGUsAYZxHl2gBrLre7iY1%40thread.tacv2/tab%3A%3A329c6cb2-7229-4ded-8e7c-3bdb3140eb83?groupId=66d72667-9e46-46f1-90e4-760f5c5bae3e&tenantId=0fdcbfa7-0ddd-45bf-9396-fa51b2356d28&allowXTenantAccess=false)
+See also [QHOAS Wiki](https://teams.microsoft.com/l/channel/19%3Ad4q3N4IHz3-BtEn51wlFmG9xGUsAYZxHl2gBrLre7iY1%40thread.tacv2/tab%3A%3A329c6cb2-7229-4ded-8e7c-3bdb3140eb83?groupId=66d72667-9e46-46f1-90e4-760f5c5bae3e&tenantId=0fdcbfa7-0ddd-45bf-9396-fa51b2356d28&allowXTenantAccess=false)
