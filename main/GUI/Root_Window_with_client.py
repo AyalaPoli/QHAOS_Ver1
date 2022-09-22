@@ -26,7 +26,7 @@ import customtkinter as ctk
 # TODO take care of error when closing client and the threading
 
 class ER_Application(Base_Window):
-    curr_title = 'Software Demo'
+    curr_title = 'QHAOS Software'
     root_message_str = "\nWelcome to the software demo!"
     window_width = 1200
     window_height = 800
