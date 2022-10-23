@@ -9,12 +9,12 @@ socket_type = socket.SOCK_STREAM  # TCP
 format = "utf-8"
 
 #For the dummy server
-server_host = "127.0.0.1"  # localhost
-port = 1062  # The port used by the server
+#server_host = "127.0.0.1"  # localhost
+#port = 1062  # The port used by the server
 
 #For the physical box
-#server_host = "192.168.1.3"
-#port = 2007
+server_host = "192.168.1.3"
+port = 2007
 
 BUFFERSIZE = 1024
 server_messages = ""
