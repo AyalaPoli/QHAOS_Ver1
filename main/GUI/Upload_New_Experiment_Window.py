@@ -78,7 +78,7 @@ class Upload_New_Experiment(Base_Window):
     invalid_suffix_filename_format="\nThe extension: {} doesn't found in valid file types list: {}\n"
     invalid_filename_format="\nThe file name format should be: [DeviceName]_[Channel].csv\n"
 
-    invalid_csv_format="\nError in input csv file: {}"
+    invalid_csv_format="\nError in input csv file: {}\n"
     invalid_headers_line_format="\nThe headers line: {} should be: {}\n"
     invalid_line_length_format="\nThe length of line: {} {} is not the required length: {}\n"
     invalid_range_param_format="\nThe {} value In lines [{}] is out of range: [{} - {}]\n"

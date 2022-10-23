@@ -13,7 +13,9 @@ from PIL import ImageTk, Image
 from main.GUI.Run_New_Experiment_Window import *
 from main.GUI.Device_Actions_Window import *
 from main.GUI.Vizualization_Window import *
+from main.GUI.SNSPD_Window import *
 from main.Configuration_files.AOM_configuration import *
+from main.Configuration_files.SNSPD_configuration import *
 from main.GUI.Session_Window import *
 from main.GUI.Help_Window import *
 from main.GUI.Base_Window import Base_Window
@@ -21,7 +23,7 @@ from main.GUI.Client import Client
 from main.GUI.Experiment_class import *
 
 import customtkinter as ctk
-
+import json
 
 # TODO take care of error when closing client and the threading
 
@@ -42,8 +44,9 @@ class ER_Application(Base_Window):
     get_file_temp_txt = "Get File Template"
     get_session_info_txt = "Get Session Info"
     terminate_txt = "Terminate session"
+    snspds_detection_txt = "SNSPDs detection"
+    open_snspds_storage_txt = "SNSPDs storage"
     open_document_txt = "Open Documentation"
-    bug_reporting_txt = "Bug Reporting"
 
     experiment_str = "Experiment"
     device_action_str = "Device Actions"
@@ -65,6 +68,7 @@ class ER_Application(Base_Window):
     run_exp_win_name='Run New Experiment'
     view_exp_win_name='Experiment Visualization'
     device_action_win_name="Single Device Action"
+    snspd_win_name="SNSPD data"
     session_win_name="Session"
     help_win_name="Help"
     windows_names_lst = [run_exp_win_name, device_action_win_name, session_win_name]
@@ -79,11 +83,10 @@ class ER_Application(Base_Window):
         super().__init__(root)
         self.root_configuration()
         self.client = Client(self)
+
         self.open_window(self.session_win_name, Session_Window(self, connect=True))
-        #self.open_vizual_exp_window()
-        #self.get_window_obj(self.session_win_name).window.grab_set()
+        self.get_window_obj(self.session_win_name).window.grab_set()
         root.update()
-        #self.session_window.window.attributes("-topmost", True)
 
         #self.test()
 
@@ -100,7 +103,6 @@ class ER_Application(Base_Window):
         self.root_qs_logo_label.image = root_qs_logo_image  # keep a reference
         self.root_qs_logo_label.pack(expand=True, fill='both')
 
-
         self.build_main_menu()
 
     def get_base_window_superclass(self):
@@ -114,12 +116,15 @@ class ER_Application(Base_Window):
                                         self.vizualize_exp_txt: self.open_vizual_exp_window}
         self.device_actions_submenu_dict = {AOM_str: self.open_AOM_device_action_window,
                                        GPIO_str: self.open_GPIO_device_action_window}
+        self.snspd_submenu_dict = {self.snspds_detection_txt: self.open_SNSPD_window,
+                                   self.open_snspds_storage_txt: self.open_SNSPD_storage}
         self.session_submenu_dict = {self.get_session_info_txt: self.get_session_info,
                                 self.terminate_txt: self.terminate_session}
         self.help_submenu_dict = {self.open_document_txt: self.open_documentation}
 
         self.labels_submenus_dict = {self.experiment_str: self.experiment_submenu_dict,
                                 self.device_action_str: self.device_actions_submenu_dict,
+                                SNSPD_str: self.snspd_submenu_dict,
                                 self.session_str: self.session_submenu_dict, self.help_str: self.help_submenu_dict}
 
         self.labels_menus_dict={}
@@ -134,7 +139,6 @@ class ER_Application(Base_Window):
                 #setattr(self, submenu_label, )
 
                 submenu.add_command(label=option, command=cmd)
-
 
 
     def open_window(self, window_name, window_obj):
@@ -170,10 +174,16 @@ class ER_Application(Base_Window):
 
         #self.device_action=Device_Actions(self, GPIO_str)
 
+    def open_SNSPD_window(self):
+        self.open_window(self.snspd_win_name, SNSPD_Window(self))
+
+    def open_SNSPD_storage(self):
+        webbrowser.open_new(SNSPDs_data_storage)
+
     def get_session_info(self):
         self.open_window(self.session_win_name, Session_Window(self))
 
-        #self.session_window=Session_Window(self)
+        self.session_window=Session_Window(self)
 
     def open_documentation(self):
         self.open_window(self.help_win_name, Help_Window(self))
@@ -249,6 +259,14 @@ class ER_Application(Base_Window):
 
     def handle_output_cmd(self):
         print("handle_output_cmd")
+
+    def get_prev_user_selections_dict(self):
+        return json.load(open(prev_user_selections_path))
+
+    def update_user_selections_dict(self, new_dict):
+        with open(prev_user_selections_path, "w") as jsonFile:
+            json.dump(new_dict, jsonFile)
+
 
     def destroy_open_child_windows(self):
         print("in destroy open child")

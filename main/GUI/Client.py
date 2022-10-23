@@ -117,14 +117,14 @@ class Client():
             self.con_time=self.get_current_time_str()
 
             con_suc_msg=self.con_success_format.format(self.con_time, self.server_host, self.port, self.username)
-            self.app.show_info_msg(self.con_success_title, con_suc_msg)
+            #self.app.show_info_msg(self.con_success_title, con_suc_msg)
             self.app.connected_success_func()
 
 
             self.tcp_thread = threading.Thread(target=self.handle_tcp_thread_func, daemon=True)
             self.tcp_thread.start()
             self.app.insert_stop_experiment_command_to_queue()#check with Meni the implementation
-            self.start_default_experiment_command()
+            #self.start_default_experiment_command()
 
 
         except Exception as err:
@@ -268,7 +268,8 @@ class Client():
         received_stop_flag = self.is_got_ack_from_control(req_stop_ack_lst)
         print("received_stop_flag {}".format(received_stop_flag))
         if not received_stop_flag:
-            self.app.show_err_msg(self.recv_error_title, self.recv_error_msg.format(self.ack_err_msg))
+            #self.app.show_err_msg(self.recv_error_title, self.recv_error_msg.format(self.ack_err_msg))
+            pass
         return received_stop_flag
 
 
@@ -305,9 +306,7 @@ class Client():
         current_time = time.time()
         while current_time - start_time < self.wait_for_control_sec:
             msg = self.get_received_msg_from_control()
-            print("mgs in while")
-            print(msg)
-            print(req_msg_lst)
+
             if any(req_msg in msg for req_msg in req_msg_lst):
                 print("in if self.control_ack in msg")
                 return True

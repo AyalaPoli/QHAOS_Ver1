@@ -5,15 +5,32 @@ class Session_Window_TestCase(ER_App_Test_Case):
     def click_connect(self):
         super().click_on_widget(self.session_window.connect_button)
 
-    def test_check_connection_credentials(self):
-        self.app.root.update()
-        super().raise_above_all(self.app.session_window.window)
+    def     \
+            test_check_connection_credentials(self):
+        # self.app.root.update()
+        # self.app.root.update_idletasks()
+        self.pump_events()
 
+        #super().raise_above_all(self.session_window.window)
+        #self.session_window.window.focus_set()
         self.click_connect()
-        super().press_enter()
-        super().press_tab()
-        super().press_enter()
+        #.pump_events()
+        #self.x_click()
+
+        #self.pump_events()
+        #super().press_enter()
+        self.pump_events()
+
+
+        #super().press_tab()
+        #self.pump_events()
+
+        #super().press_enter()
+        #self.pump_events()
+
         super().click_on_main_menu_option(self.app.experiment_str, self.app.run_new_exp_txt)
+        self.pump_events()
+
         #super().press_enter()
         #self.curr_window=self.app
         #assertNotIn(a, b)

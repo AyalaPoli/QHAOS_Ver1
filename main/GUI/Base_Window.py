@@ -146,6 +146,7 @@ class Base_Window(object):
     def set_button_size(self, button_obj, height, width):
         button_obj.configure(height = height, width = width)
 
+
     def close_window(self):
         if hasattr(self, "app"):
             self.app.remove_window_obj(self.curr_title)

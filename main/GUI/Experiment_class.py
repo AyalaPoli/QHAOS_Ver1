@@ -78,10 +78,6 @@ class Experiment():
 
 
     def start_experiment_runner(self):
-        # if self.is_default_experiment():
-        #     self.app.show_info_msg(self.default_exp_started_title, self.default_exp_started_txt)
-        # else:
-        #     self.app.show_info_msg(self.exp_started_title, self.exp_started_msg.format(self.input_dir_path, self.iteration_num,self.cycle_time))
 
         try:
             #self.create_experiment_df() moved to upload

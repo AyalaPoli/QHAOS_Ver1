@@ -17,9 +17,11 @@ config_files_dir=add_to_path(config_dir, "files_params")
 config_locations_dir=add_to_path(config_dir, "locations")
 config_AOM=add_to_path(config_dir, "AOM_configuration.py")
 config_GPIO=add_to_path(config_dir, "GPIO_configuration.py")
+config_SNSPD=add_to_path(config_dir, "SNSPD_configuration.py")
 
 experiments_files_dir=add_to_path(root_dir, "Experiment Files")
 tests_dir=add_to_path(root_dir,"Tests")
+widgets_photos_dir=add_to_path(tests_dir, "widgets_photos")
 
 config_run_dir=add_to_path(config_dir, "run")
 config_session_dir=add_to_path(config_dir, "Session")
@@ -40,5 +42,15 @@ default_exp_test_dir=add_to_path(experiments_directories,"default_experiment_dir
 
 sorted_merged_working_path = "sorted_df.csv"
 last_running_path_file=add_to_path(config_dir, "last_running_path.txt")
-events_time_filename="events_times.txt"
+events_time_filename="events.txt"
 last_view_path_file=add_to_path(config_dir, "last_visualization_path.txt")
+
+prev_user_selections_path=add_to_path(config_dir, "previous_user_selections.json")
+exp_runner_key="Experiment Runner"
+exp_run_last_path="last running path"
+exp_viewer_key="Experiment Viewer"
+exp_view_last_path="last viewer path"
+exp_view_last_AOMs="AOM channels"
+exp_view_last_GPIOs="GPIO channels"
+
+SNSPDs_data_storage=add_to_path(root_dir, "dummy_data_storage")

@@ -39,6 +39,9 @@ class Select_Devices_Window(Base_Window):
         self.AOM_frame=super().build_frame(self.window, 1, 0)
         super().build_label(self.AOM_frame, self.choose_AOM_txt, 0, 0, padx=2, pady=2)
         index_lst=self.vizual_exp_window_obj.available_exp_devices_dict[AOM_str]
+        print(self.vizual_exp_window_obj.available_exp_devices_dict[AOM_str])
+        print("self.vizual_exp_window_obj.available_exp_devices_dict[AOM_str]")
+
 
         self.AOM_index_dict=build_listbox_index_dict(index_lst, start_val=0)
 
@@ -76,7 +79,9 @@ class Select_Devices_Window(Base_Window):
         self.GPIO_frame = super().build_frame(self.window, 1, 1)
         super().build_label(self.GPIO_frame, self.choose_GPIO_txt, 0, 0, padx=2, pady=2)
         index_lst = self.vizual_exp_window_obj.available_exp_devices_dict[GPIO_str]
-        print("in build GPIO listbox index lst")
+        print("self.vizual_exp_window_obj.available_exp_devices_dict[GPIO_str]")
+        print(self.vizual_exp_window_obj.available_exp_devices_dict[GPIO_str])
+
         print(index_lst)
         self.GPIO_index_dict=build_listbox_index_dict(index_lst, start_val=0)
 
