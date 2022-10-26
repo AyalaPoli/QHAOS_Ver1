@@ -52,7 +52,8 @@ class Run_New_Experiment(Base_Window):
 
     run_iter_txt="Current experiment iteration: {} mod {} billion"
 
-
+    includes_visualization=False
+    includes_SNSPD=False
 
     rows_weights_dict={0:1, 1:20, 2:5}
     columns_weights_dict={0:1}
@@ -226,6 +227,8 @@ class Run_New_Experiment(Base_Window):
         dev_channel_dict = {dev: [] for dev in device_choices}
 
         for input_file in os.listdir(self.dir_path):
+            if input_file in external_experiment_files_list:
+                continue
             device, channel = get_device_channel_tupple(input_file)
             dev_channel_dict[device].append(channel)
 

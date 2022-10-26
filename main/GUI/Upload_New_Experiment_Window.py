@@ -100,6 +100,8 @@ class Upload_New_Experiment(Base_Window):
     max_err_index_lst=10
     empty_str=""
 
+
+
     def __init__(self, run_exp_window_obj, default_flag=False, restart_flag=False, external_uploaded_path=None):
         print(" in init upload new experiment window")
         super().__init__(run_exp_window_obj.window)
@@ -190,6 +192,8 @@ class Upload_New_Experiment(Base_Window):
         copy_tree(self.input_dir_path, working_dir)
 
         for input_file in os.listdir(working_dir):
+            if input_file in external_experiment_files_list:
+                continue
             df = pd.read_csv(add_to_path(self.input_dir_path, input_file), keep_default_na=False)
             device, channel = get_device_channel_tupple(input_file)
             df[self.device_col] = device
@@ -204,11 +208,18 @@ class Upload_New_Experiment(Base_Window):
         # validation_message=invalid_message_str
 
         for self.curr_file in os.listdir(self.input_dir_path):
-            print("events_time_filename {}".format(events_time_filename))
 
             if self.curr_file==events_time_filename:
                 print("curr file {}".format(self.curr_file))
                 print("events_time_filename {}".format(events_time_filename))
+                self.run_exp_window.includes_visualization=True
+
+                continue
+
+            if self.curr_file==snspd_timing_filename:
+                print("curr file {}".format(self.curr_file))
+                print("events_time_filename {}".format(events_time_filename))
+                self.run_exp_window.includes_SNSPD=True
                 continue
 
             print("curr_file")
@@ -370,6 +381,8 @@ class Upload_New_Experiment(Base_Window):
         copy_tree(self.input_dir_path, working_dir)
 
         for input_file in os.listdir(working_dir):
+            if input_file in external_experiment_files_list:
+                continue
             df = pd.read_csv(add_to_path(self.input_dir_path, input_file), keep_default_na=False)
             device, channel = get_device_channel_tupple(input_file)
             print(device)

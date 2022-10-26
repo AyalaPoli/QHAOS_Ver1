@@ -53,4 +53,7 @@ exp_view_last_path="last viewer path"
 exp_view_last_AOMs="AOM channels"
 exp_view_last_GPIOs="GPIO channels"
 
+snspd_timing_filename="SNSPD_timing.csv"
+
 SNSPDs_data_storage=add_to_path(root_dir, "dummy_data_storage")
+external_experiment_files_list=[events_time_filename, snspd_timing_filename]

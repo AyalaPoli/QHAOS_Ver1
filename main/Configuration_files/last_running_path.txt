@@ -1,1 +1,1 @@
-C:/Users/ayala/PycharmProjects/experiments_runner/main/Experiments_Directories/my_dummy_experiment
+C:/Users/ayala/PycharmProjects/experiments_runner/main/Experiments_Directories/working_vizualization_dir

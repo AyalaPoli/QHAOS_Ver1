@@ -350,7 +350,8 @@ class Vizualization_Window(Base_Window):
     def left_button_cmd(self):
 
         first_req_event_index = self.selected_exp_devices_dict[self.curr_device_type].index(self.req_events_keys[0])
-        self.req_events_dict=OrderedDict(zip(range(first_req_event_index+self.req_events_len), self.times_dict.keys()[first_req_event_index :first_req_event_index+self.req_events_len]))
+        self.req_events_dict=OrderedDict(zip(range(first_req_event_index+self.req_events_len),
+                                             self.times_dict.keys()[first_req_event_index :first_req_event_index+self.req_events_len]))
         self.req_events_keys=self.req_events_dict.keys()
 
         self.req_events_keys = self.move_list_left(self.req_events_keys.copy())

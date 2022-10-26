@@ -272,8 +272,6 @@ class ER_Application(Base_Window):
         print("in destroy open child")
         for window_name in self.windows_names_lst:
 
-
-
             if self.is_window_open(window_name):
                 self.get_window_obj(window_name).window.destroy()
         self.windows_names_lst=[]
